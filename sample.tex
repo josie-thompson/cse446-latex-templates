@@ -1,9 +1,13 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage[margin=1in]{geometry}
+\setlength\parindent{0pt}
 
 \usepackage{enumerate}
 \usepackage{amsmath, amssymb}
+\usepackage{listings}
+\usepackage{csquotes}
+\usepackage{multirow, tabularx}
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -11,14 +15,141 @@
 \begin{document}
 \section*{Overview}
 In this document we'll cover the basics of latex, as well as some more advanced
-math features I expect to use in the assignments:
+math features I expect to use in the assignments. Some of the stuff I'll cover
+is:
 \begin{itemize}
-\item basic latex stuff like lists and tables
+\item basic latex stuff like font formatting, lists, and tables
 \item math stuff including matrices, math environments, and math symbols
 \item including images and code in your document
 \end{itemize}
 
 \section*{Basics}
+If you're reading the source code, you've probably already seen some of the
+commands and environments I'll be going over in this section - though maybe
+you're already familiar with them. And in fact everything in this section, you
+can probably find better reference for on Overleaf, but I'm including it anyway
+because it may be useful to have useful things all in one place.~\\
+
+Before getting into things, it's probably important to note that I'll be listing
+a bunch of commands by their name, but just know that a command in latex might
+look something like \textbackslash command\{argument\}. You can see many
+examples of this in the source for this document.
+
+\subsection*{Font Formatting}
+Just some really basic stuff: 
+\begin{itemize}
+\item you can write \textbf{bold text} with \lstinline{textbf}
+\item \textit{italics} are written with \lstinline{textit}
+\item \underline{underline} your text with \lstinline{underline}
+\item a one that's a little less known is \enquote{proper quotations} using
+      \lstinline{enquote} from the package \lstinline{csquotes}. If you use
+      regular "quotation marks" they'll end up both pointing the same way :-/
+\end{itemize}
+
+\subsection*{Lists}
+Lists in latex can be very simple, but they can also be complex if you want
+them to be. One important note is that lists in latex are probably the first
+\textit{environment} you'll come across. An environment is essentially something
+you need to \lstinline{begin} and \lstinline{end}, unlike the commands you've
+seen so far. You can see examples of all of this in action in the source
+document.
+
+\begin{itemize}
+\item \textbf{unordered} lists can be made via the \lstinline{itemize}
+      environment
+\item all list environments require you to give them \enquote{items} like the
+      two here
+\end{itemize}
+
+\begin{enumerate}[1.]
+\item \textbf{ordered} lists use the \lstinline{enumerate} environment.
+
+\item enumerate is actually defined in more than one package. The simplest
+      package to use is \lstinline{enumerate}, but if you're not satisfied
+      with it's capabilities, a more flexible but also less approachable
+      package \lstinline{enumitem} also defines the enumerate environment
+
+\item some environments like \lstinline{enumerate} also take arguments in
+      square braces
+      \begin{enumerate}[(a)]
+      \item in the enumerate package you can specify what symbols to use for
+            your ordering, as well as other frills like ending with a period
+            or parentheses.
+      \item you can also nest any list in any sort of environment
+      \end{enumerate}
+      \begin{itemize}
+      \item even mix different types of list environments
+      \end{itemize}
+\end{enumerate}
+
+\subsection*{Tables}
+Tables are often very useful in latex
+\begin{tabular}{cc}
+a & b\\
+c & d\\
+\end{tabular}
+
+\begin{itemize}
+\item This simple 2x2 table is made with the \lstinline{tabular} environment.
+\item The tabular environment takes arguments in curly braces (as opposed to
+      square braces like with list environments).
+\item The arguments to the tabular environment tell latex how many columns to
+      make and how to justify each colum
+
+      So \textbf{lcr} as arguments tells the table to make three columns that
+      are left, center, and right-justified respectively.
+
+\item you can also give your tables vertical and horizontal bars. for example,
+      my favorite table format looks like this
+
+      \begin{tabular}{c|cc}
+        & a & b \\
+      \hline
+      c & 1 & 2 \\
+      d & 3 & 4 \\
+      \end{tabular}
+
+      you can see in the source code that the vertical bar was specified in the
+      arguments to the tabular environment, while the horizontal bar was it's
+      own line in the table, using the no-argument command \lstinline{hline}.
+
+\item The last thing I want to mention about tables is the ability to combine
+      cells. This can be done using the \lstinline{multirow} and
+      \lstinline{multicolumn} commands.
+
+      In this example, both take three arguments in separate curly braces:
+      the number of cells
+      to span, the justification and border info for multicolumn - and cell
+      width infor for multirow, and finally the content of the cell
+
+      \begin{tabular}{c|cc}
+        & \multicolumn{2}{c}{span two columns}\\
+        \hline
+        \multirow{2}{*}{span two rows}
+        & 1 & 2\\
+        & 3 & 4
+      \end{tabular}
+
+      Although the multirow command requires the \lstinline{multirow} and
+      \lstinline{tabularx} packages.
+\end{itemize}
+
+\subsection*{Sections}
+Finally, I'll breifly mention sections and subsections. As you can see in the
+source, I've been using these throughout to create headers for sections and
+subsections just as you might expect. One important note is that I use an
+asterisk after the command name to tell latex that I don't want the sections
+to be ordered. This is a personal preference and if you do want ordered
+sections just leave out the asterisk
+
+\section{An example of an ordered Section}
+\subsection{And an ordered subsection}
+
+As a last word I'll also mention the command \lstinline{newpage} which - as
+you might guess - inserts a page break. This is very useful for organizing your
+document as I'll do now to give a clean break to the next section.
+
+\newpage
 \section*{Some mathy things}
 \section*{Dealing with images, plots and code}
 \end{document}
