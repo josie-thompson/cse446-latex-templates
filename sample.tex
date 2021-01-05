@@ -1,14 +1,21 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
-\usepackage[margin=1in]{geometry}
-\setlength\parindent{0pt}
+\usepackage[margin=1in]{geometry} % set the margins to 1in all around
+\setlength\parindent{0pt} % don't automatically indent text
 
+\usepackage{csquotes} % enquote
 \usepackage{enumerate}
+\usepackage{multirow, tabularx} % multirow
+
 \usepackage{amsmath, amssymb, amsfonts}
-\usepackage{physics}
+\usepackage{physics} % abs
+
 \usepackage{listings}
-\usepackage{csquotes}
-\usepackage{multirow, tabularx}
+% some basic styling for code snippets
+\lstset{basicstyle=\footnotesize\ttfamily}
+
+\usepackage{graphicx}
+\graphicspath{{./}} % get images from this directory
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -273,5 +280,32 @@ or here's an aligned equation involving matrices
                    + \ldots + \mathbf{u_r}\sigma_r\mathbf{v_r^T}
 \end{align*}
 
+\newpage
 \section*{Dealing with images, plots and code}
+
+\subsection*{Including code}
+You may have seen me use \lstinline{lstinline} a lot - and you've probably
+guessed that it makes inline code snippets. However you can also include code
+from a file using \lstinline{lstinputlisting}.
+
+\lstinputlisting[language=Python]{sample.py}
+
+Both of these commands require you to use the \lstinline{listings} package.
+You can also customize the style of the code snippets. You can see I did a
+basic styling in the preamble.
+
+\subsection*{Including images}
+Of course, you can also have images in your document. This can be done using
+the command \lstinline{includegraphics} from the \lstinline{graphicx} package.
+With the \lstinline{graphicx} package, you can specify a directory that you've
+saved your image files in, so you can include them just by their name.~\\
+
+You can also specify some arguments like width in square braces before the name
+of the image. Sepcifying width will scale the image. The \lstinline{textwidth}
+macro is a useful constant for this that gives the width of the page.
+Here are the two images generated from the python code included above.
+
+\includegraphics[width=0.5\textwidth]{fibonacci-negative-n.png}
+\includegraphics[width=0.5\textwidth]{fibonacci-positive-n.png}
+
 \end{document}
