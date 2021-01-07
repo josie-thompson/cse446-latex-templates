@@ -6,15 +6,40 @@
 \usepackage{enumerate}
 \usepackage{amsmath, amssymb, amsfonts}
 
-\usepackage{listings}
-% some basic styling for code snippets
-\lstset{basicstyle=\footnotesize\ttfamily}
-
 \usepackage{graphicx}
 \graphicspath{{./}} % get images from this directory
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Z}{\mathbb{Z}}
+
+% mathematical functions that should appear as non-italic in math environments
+\newcommand{\nullspace}{\mathrm{null}}
+\newcommand{\rref}{\mathrm{rref}}
+\newcommand{\col}{\mathrm{col}}
+\newcommand{\proj}{\mathrm{proj}}
+\newcommand{\spanspace}{\mathrm{span}}
+
+% image setup
+\usepackage{graphicx}
+\graphicspath{{./images/}}
+\usepackage{float}
+
+% code setup
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{cyan}{rgb}{0.0, 0.55, 0.55}
+\definecolor{teal}{rgb}{0.39, 0.49, 0.55}
+\definecolor{grape}{rgb}{0.35, 0.29, 0.49}
+
+\lstset{backgroundcolor=\color{white},
+        basicstyle=\footnotesize\ttfamily,
+        showstringspaces=false,
+        commentstyle=\color{gray},
+        keywordstyle=\color{teal},
+        stringstyle=\color{grape}}
+
 
 \begin{document}
 \textbf{Collaborators:}
