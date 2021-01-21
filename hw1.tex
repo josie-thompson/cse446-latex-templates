@@ -4,6 +4,7 @@
 
 \usepackage{enumerate}
 \usepackage{amsmath, amssymb, amsfonts}
+\usepackage{physics}
 \usepackage{mathtools} % align matrix elements
 
 % mathematical functions that should appear as non-italic in math environments
@@ -11,18 +12,17 @@
 \newcommand{\rref}{\mathrm{rref}}
 \newcommand{\col}{\mathrm{col}}
 \newcommand{\proj}{\mathrm{proj}}
-\newcommand{\spanspace}{\mathrm{span}}
-\newcommand{\rank}{\mathrm{rank}}
+\newcommand{\Span}{\mathrm{span}}
+\renewcommand{\rank}{\mathrm{rank}}
 \newcommand{\Cov}{\mathrm{Cov}}
 \newcommand{\Var}{\mathrm{Var}}
-\newcommand{\Trace}{\mathrm{Trace}}
+\renewcommand{\Trace}{\mathrm{Trace}}
 
 % useful math functions
 \newcommand{\E}{\mathbb{E}}
 \renewcommand{\P}{\mathbb{P}}
 \newcommand{\Normal}{\mathcal{N}}
-\newcommand{\1}{\mathbf{1}}
-\newcommand{\dd}[1]{\frac{d}{d #1}}
+\newcommand{\1}[1]{\mathbf{1}\left\{#1\right\}}
 \newcommand{\sumn}[1]{\sum_{#1=1}^n}
 
 % image setup
